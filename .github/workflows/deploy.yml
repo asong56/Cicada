@@ -29,7 +29,3 @@ jobs:
         with:
           folder: dist
           branch: gh-pages
-        uses: JamesIves/github-pages-deploy-action@v4
-        with:
-          folder: dist    # Vite 默认打包产物在 dist 文件夹
-          branch: gh-pages # 部署到 gh-pages 分支

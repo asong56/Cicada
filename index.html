@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <title>Cicada</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link href="https://fonts.googleapis.com/css2?family=Lora:ital@0;1&display=swap" rel="stylesheet">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/lz-string/1.4.4/lz-string.min.js"></script>
+    </head>
+    <body>
+        <canvas id="base"></canvas>
+        <canvas id="live"></canvas>
+        <canvas id="cur"></canvas>
+        <textarea id="ti" rows="1" spellcheck="false"></textarea>
+        
+        <nav id="bar">
+            <button class="tb on" id="btn-pen" title="Pen (P)">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"/>
+                </svg>
+            </button>
+            <button class="tb" id="btn-text" title="Text (T)">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="4 7 4 4 20 4 20 7"/>
+                    <line x1="9" y1="20" x2="15" y2="20"/>
+                    <line x1="12" y1="4" x2="12" y2="20"/>
+                </svg>
+            </button>
+            <button class="tb" id="btn-eraser" title="Eraser (E)">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M20 20H7L3 16l13-13 6 6-2 11z"/>
+                    <line x1="6" y1="14" x2="14" y2="6"/>
+                </svg>
+            </button>
+            <div class="sep"></div>
+            
+            <button class="tb" id="btn-undo" title="Undo ⌘Z">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="9 14 4 9 9 4"/>
+                    <path d="M20 20v-7a4 4 0 0 0-4-4H4"/>
+                </svg>
+            </button>
+            <button class="tb" id="btn-redo" title="Redo ⌘⇧Z">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="15 14 20 9 15 4"/>
+                    <path d="M4 20v-7a4 4 0 0 1 4-4h12"/>
+                </svg>
+            </button>
+            <div class="sep"></div>
+            
+            <button class="cb on" style="background:var(--c0)" title="Charcoal"></button>
+            <button class="cb" style="background:var(--c1)" title="Terra Rose"></button>
+            <button class="cb" style="background:var(--c2)" title="Sage"></button>
+            <button class="cb" style="background:var(--c3)" title="Stone Blue"></button>
+            <button class="cb" style="background:var(--c4)" title="Warm Sand"></button>
+            <button class="cb" style="background:var(--c5)" title="Lavender Gray"></button>
+            <div class="sep"></div>
+            
+            <button class="wb on" data-wi="0" title="Thin"><span class="dot" style="width:3px;height:3px"></span></button>
+            <button class="wb" data-wi="1" title="Medium"><span class="dot" style="width:8px;height:8px"></span></button>
+            <button class="wb" data-wi="2" title="Thick"><span class="dot" style="width:14px;height:14px"></span></button>
+            <div class="sep"></div>
+            
+            <button class="tb" id="btn-save" title="Save current view as link"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg></button>
+        </nav>
+        <button id="zoom-hud" title="Reset view (0)">100%</button>
+        <div id="toast"></div>
+    </body>
+</html>

@@ -3,7 +3,7 @@
     "private": true,
     "version": "1.0.0",
     "description": "A minimalist, high-performance digital whiteboard for the web. Supports infinite canvas and image export.",
-    "author": "Ansel-S <238927804+Ansel-S@users.noreply.github.com>",
+    "author": "asong56 <238927804+asong56@users.noreply.github.com>",
     "license": "MIT",
     "type": "module",
     "scripts": {

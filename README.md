@@ -4,7 +4,7 @@
 
 Cicada is a lightweight sketching tool built for speed and elegance, it strips away the clutter to focus on what matters: your ideas.
 
-[Live Demo](https://ansel-s.github.io/Cicada/)
+[Live Demo](https://asong56.github.io/Cicada/)
 
 ---
 

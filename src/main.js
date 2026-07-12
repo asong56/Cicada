@@ -1,3 +1,5 @@
+import InlineWorker from './render.worker.js?worker&inline';
+
 const $ = id => document.getElementById(id);
 const base=$('base'),live=$('live'),cur=$('cur'),ti=$('ti');
 const lctx=live.getContext('2d'),cctx=cur.getContext('2d');
@@ -20,7 +22,7 @@ let recording=true,replayLog=[],recordStart=performance.now();
 const pending=new Map();let sid=0,wk;
 {
   const off=base.transferControlToOffscreen();
-  wk=new Worker(new URL('./render.worker.js',import.meta.url),{type:'module'});
+  wk = new InlineWorker();
   wk.onmessage=({data})=>{
     if(data.type==='simplified'){pending.get(data.id)?.(data.pts);pending.delete(data.id);}
   };
